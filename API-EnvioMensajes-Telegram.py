@@ -1,7 +1,12 @@
 from flask import Flask, request
 import requests
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
+
+
 
 TELEGRAM_BOT_TOKEN = '7672794559:AAHF0_VhsV5Ps-N9DmkNU6hiSfNNdT0MI2Q'
 TELEGRAM_CHAT_ID = '-4756247251' 
