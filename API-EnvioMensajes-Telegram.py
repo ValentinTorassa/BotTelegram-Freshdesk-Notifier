@@ -80,6 +80,26 @@ def ticket_pendiente():
     return enviar_mensaje(message)
 
 
+@app.route('/contacto-web', methods=['POST'])
+def contacto_web():
+    data = request.get_json()
+
+    nombre = data.get("from_name")
+    email = data.get("from_email")
+    empresa = data.get("company", "No especificada")
+    mensaje = data.get("message")
+
+    telegram_msg = f"""📩 *Nuevo mensaje desde el Portafolio Web*\n
+👤 *Nombre:* {nombre}
+📧 *Email:* {email}
+🏢 *Empresa:* {empresa}
+💬 *Mensaje:*\n{mensaje}
+"""
+
+    return enviar_mensaje(telegram_msg)
+
+
+
 @app.route('/test', methods=['GET'])
 def test_telegram():
     message = "🧪 *Prueba exitosa!* Este es un mensaje de test desde tu bot de Telegram."
